@@ -10,8 +10,14 @@ import {Product} from '../models/product.model'
 export class ProductsService {
   constructor(private http: HttpClient) {}
 
-  getProducts(): Observable<Product[]> {
-    return this.http.get<Product[]>(`${environment.apiUrl}products`)
+  getProducts(categories?: string | null): Observable<Product[]> {
+    if (!categories) {
+      return this.http.get<Product[]>(`${environment.apiUrl}products`)
+    } else {
+      return this.http.get<Product[]>(
+        `${environment.apiUrl}products?categories=${categories}`
+      )
+    }
   }
 
   getProduct(id: string): Observable<Product> {
@@ -29,7 +35,19 @@ export class ProductsService {
     )
   }
 
+  getTotalProducts() {
+    return this.http.get<{count: number; estimatedCount: number}>(
+      `${environment.apiUrl}products/stats/count`
+    )
+  }
+
   deleteProductById(id: string) {
     return this.http.delete(`${environment.apiUrl}products/${id}`)
+  }
+
+  getFeatureProducts(count: number): Observable<Product[]> {
+    return this.http.get<Product[]>(
+      `${environment.apiUrl}products/stats/featured?count=${count}`
+    )
   }
 }

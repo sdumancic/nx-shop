@@ -39,4 +39,16 @@ export class OrdersService {
   deleteOrderById(id: string) {
     return this.http.delete(`${environment.apiUrl}orders/${id}`)
   }
+
+  getOrderCount() {
+    return this.http.get<{orderCount: number}>(
+      `${environment.apiUrl}orders/stats/count`
+    )
+  }
+
+  getTotalSales() {
+    return this.http.get<{totalSales: number}>(
+      `${environment.apiUrl}orders/stats/totalSales`
+    )
+  }
 }

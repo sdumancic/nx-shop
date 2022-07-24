@@ -11,6 +11,11 @@
 
 @import './base/configuration';
 
+//Shared
+@import './apps/admin/shell.scss';
+@import './apps/admin/dashboard.scss';
 //libs
 @import './libs/ui/ui';
 @import './libs/users/login.scss';
+
+

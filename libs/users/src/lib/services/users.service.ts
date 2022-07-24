@@ -29,4 +29,10 @@ export class UsersService {
   deleteUserById(id: string) {
     return this.http.delete(`${environment.apiUrl}users/${id}`)
   }
+
+  getCountUsers() {
+    return this.http.get<{count: number; estimatedCount: number}>(
+      `${environment.apiUrl}users/stats/count`
+    )
+  }
 }

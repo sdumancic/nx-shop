@@ -1,0 +1,69 @@
+<div class="product-page" *ngIf="product">
+  <div class="grid">
+    <div class="col-6">
+      <nx-shop-gallery [images]="product?.images"></nx-shop-gallery>
+    </div>
+    <div class="col-6 product">
+      <div class="product-name">
+        <h2>{{ product?.name }}</h2>
+      </div>
+      <p class="product-desc">
+        {{ product?.description }}
+      </p>
+      <div class="product-rating">
+        <p-rating
+          [(ngModel)]="product.rating"
+          [disabled]="true"
+          [cancel]="false"
+        ></p-rating>
+      </div>
+      <div class="product-price">
+        {{ product?.price | currency }}
+        <span class="price-before">{{ product.price | currency }}</span>
+      </div>
+      <div class="product-quantity">
+        <div class="field col-12 md:col-3 p-0">
+          <label for="quantity">Quantity</label>
+          <p-inputNumber
+            [(ngModel)]="quantity"
+            [showButtons]="true"
+            title="Quantity"
+            placeholder="Quantity"
+            buttonLayout="horizontal"
+            inputId="quantity"
+            [step]="1"
+            decrementButtonClass="p-button-danger"
+            incrementButtonClass="p-button-success"
+            incrementButtonIcon="pi pi-plus"
+            decrementButtonIcon="pi pi-minus"
+            mode="decimal"
+          >
+          </p-inputNumber>
+        </div>
+      </div>
+      <div class="product-actions p-0">
+        <button
+          pButton
+          pRipple
+          type="button"
+          label="Buy now"
+          class="p-button-rounded mr-2"
+        ></button>
+        <button
+          pButton
+          pRipple
+          type="button"
+          label="Add To Cart"
+          class="p-button-rounded mr-2"
+          (click)="addProductToCart()"
+        ></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid product-rich-desc">
+    <div class="col-12">
+      <div [innerHTML]="product?.richDescription"></div>
+    </div>
+  </div>
+</div>

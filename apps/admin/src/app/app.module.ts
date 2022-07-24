@@ -37,7 +37,7 @@ import {OrdersListComponent} from './pages/orders/orders-list/orders-list.compon
 import {OrdersDetailComponent} from './pages/orders/orders-detail/orders-detail.component'
 import {FieldsetModule} from 'primeng/fieldset'
 import {UsersModule} from '@nx-shop/users'
-import {LoginComponent} from '../../../../libs/users/src/lib/pages/login/login.component'
+import {AppRoutingModule} from './app-routing.module'
 
 const UX_MODULE = [
   CardModule,
@@ -57,26 +57,6 @@ const UX_MODULE = [
   TagModule,
   FieldsetModule
 ]
-const routes: Routes = [
-  {
-    path: '',
-    component: ShellComponent,
-    children: [
-      {path: 'dashboard', component: DashboardComponent},
-      {path: 'categories', component: CategoriesListComponent},
-      {path: 'categories/form', component: CategoriesFormComponent},
-      {path: 'categories/form/:id', component: CategoriesFormComponent},
-      {path: 'products', component: ProductsListComponent},
-      {path: 'products/form', component: ProductsFormComponent},
-      {path: 'products/form/:id', component: ProductsFormComponent},
-      {path: 'users', component: UsersListComponent},
-      {path: 'users/form', component: UsersFormComponent},
-      {path: 'users/form/:id', component: UsersFormComponent},
-      {path: 'orders', component: OrdersListComponent},
-      {path: 'orders/:id', component: OrdersDetailComponent}
-    ]
-  }
-]
 @NgModule({
   declarations: [
     AppComponent,
@@ -94,7 +74,7 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes, {initialNavigation: 'enabledBlocking'}),
+    AppRoutingModule,
     HttpClientModule,
     FormsModule,
     NoopAnimationsModule,

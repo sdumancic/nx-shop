@@ -6,6 +6,8 @@ import {InputTextModule} from 'primeng/inputtext'
 import {ButtonModule} from 'primeng/button'
 import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 import {NoopAnimationsModule} from '@angular/platform-browser/animations'
+import {JwtInterceptor} from './services/jwt.interceptor'
+import {HTTP_INTERCEPTORS} from '@angular/common/http'
 
 const routes: Routes = [{path: 'login', component: LoginComponent}]
 @NgModule({
@@ -18,6 +20,13 @@ const routes: Routes = [{path: 'login', component: LoginComponent}]
     NoopAnimationsModule,
     ReactiveFormsModule
   ],
-  declarations: [LoginComponent]
+  declarations: [LoginComponent],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true
+    }
+  ]
 })
 export class UsersModule {}
