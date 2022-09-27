@@ -1,8 +1,8 @@
 import {HttpClient} from '@angular/common/http'
 import {Pipe, PipeTransform} from '@angular/core'
-import {Category} from '@nx-shop/products'
-import {environment} from '@env/environment'
 import {delay, take} from 'rxjs'
+import {Category} from '../models/category.model'
+import {API_URL} from '../products.module'
 
 @Pipe({
   name: 'categoryNamePipe',
@@ -15,7 +15,7 @@ export class CategoryNamePipe implements PipeTransform {
 
   transform(categoryId: string): any {
     this.http
-      .get<Category>(`${environment.apiUrl}categories/${categoryId}`)
+      .get<Category>(`${API_URL}categories/${categoryId}`)
       .pipe(take(1), delay(1000))
       .subscribe(result => {
         this.data = result.name

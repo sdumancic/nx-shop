@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core'
 import {HttpClient} from '@angular/common/http'
 import {Observable} from 'rxjs'
-import {environment} from '@env/environment'
 import {Product} from '../models/product.model'
+import {API_URL} from '../products.module'
 
 @Injectable({
   providedIn: 'root'
@@ -12,42 +12,42 @@ export class ProductsService {
 
   getProducts(categories?: string | null): Observable<Product[]> {
     if (!categories) {
-      return this.http.get<Product[]>(`${environment.apiUrl}products`)
+      return this.http.get<Product[]>(`${API_URL}products`)
     } else {
       return this.http.get<Product[]>(
-        `${environment.apiUrl}products?categories=${categories}`
+        `${API_URL}products?categories=${categories}`
       )
     }
   }
 
   getProduct(id: string): Observable<Product> {
-    return this.http.get<Product>(`${environment.apiUrl}products/${id}`)
+    return this.http.get<Product>(`${API_URL}products/${id}`)
   }
 
   createProduct(productData: FormData): Observable<Product> {
-    return this.http.post<Product>(`${environment.apiUrl}products`, productData)
+    return this.http.post<Product>(`${API_URL}products`, productData)
   }
 
   updateProduct(productData: FormData): Observable<Product> {
     return this.http.put<Product>(
-      `${environment.apiUrl}products/${productData.get('id')}`,
+      `${API_URL}products/${productData.get('id')}`,
       productData
     )
   }
 
   getTotalProducts() {
     return this.http.get<{count: number; estimatedCount: number}>(
-      `${environment.apiUrl}products/stats/count`
+      `${API_URL}products/stats/count`
     )
   }
 
   deleteProductById(id: string) {
-    return this.http.delete(`${environment.apiUrl}products/${id}`)
+    return this.http.delete(`${API_URL}products/${id}`)
   }
 
   getFeatureProducts(count: number): Observable<Product[]> {
     return this.http.get<Product[]>(
-      `${environment.apiUrl}products/stats/featured?count=${count}`
+      `${API_URL}products/stats/featured?count=${count}`
     )
   }
 }

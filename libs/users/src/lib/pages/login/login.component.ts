@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core'
 import {FormBuilder, FormGroup, Validators} from '@angular/forms'
 import {AuthService} from '../../services/auth.service'
 import {take} from 'rxjs'
-import {User} from '@nx-shop/users'
+import {User} from '../../models/user.model'
 import {HttpErrorResponse} from '@angular/common/http'
 import {LocalStorageService} from '../../services/local-storage.service'
 import {Router} from '@angular/router'
@@ -13,7 +13,7 @@ import {Router} from '@angular/router'
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  loginFormGroup: FormGroup | undefined
+  loginFormGroup!: FormGroup
   authError = false
   authErrorMsg = 'Email or password are wrong'
   constructor(

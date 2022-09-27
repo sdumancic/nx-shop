@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core'
 import {ProductsService} from '../../services/products.service'
 import {take} from 'rxjs'
-import {Product} from '@nx-shop/products'
+import {Product} from '../../models/product.model'
 
 @Component({
   selector: 'nx-shop-featured-products',

@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core'
 import {HttpClient} from '@angular/common/http'
 import {Observable} from 'rxjs'
-import {environment} from '@env/environment'
-import {Order} from '@nx-shop/orders'
+import {Order} from '../models/order.model'
+import {API_URL} from '../orders.module'
 
 @Injectable({
   providedIn: 'root'
@@ -11,44 +11,40 @@ export class OrdersService {
   constructor(private http: HttpClient) {}
 
   getOrders(): Observable<Order[]> {
-    return this.http.get<Order[]>(`${environment.apiUrl}orders`)
+    return this.http.get<Order[]>(`${API_URL}orders`)
   }
 
   getOrder(id: string): Observable<Order> {
-    return this.http.get<Order>(`${environment.apiUrl}orders/${id}`)
+    return this.http.get<Order>(`${API_URL}orders/${id}`)
   }
 
   createOrder(order: Order) {
-    return this.http.post<Order>(`${environment.apiUrl}`, order)
+    return this.http.post<Order>(`${API_URL}orders`, order)
   }
 
   updateOrder(order: Order) {
-    return this.http.put<Order>(
-      `${environment.apiUrl}orders/${order.id}`,
-      order
-    )
+    return this.http.put<Order>(`${API_URL}orders/${order.id}`, order)
   }
 
   updateOrderStatus(orderId: string, orderStatus: {status: string}) {
-    return this.http.put<Order>(
-      `${environment.apiUrl}orders/${orderId}`,
-      orderStatus
-    )
+    return this.http.put<Order>(`${API_URL}orders/${orderId}`, orderStatus)
   }
 
   deleteOrderById(id: string) {
-    return this.http.delete(`${environment.apiUrl}orders/${id}`)
+    return this.http.delete(`${API_URL}orders/${id}`)
   }
 
   getOrderCount() {
-    return this.http.get<{orderCount: number}>(
-      `${environment.apiUrl}orders/stats/count`
-    )
+    return this.http.get<{orderCount: number}>(`${API_URL}orders/stats/count`)
   }
 
   getTotalSales() {
     return this.http.get<{totalSales: number}>(
-      `${environment.apiUrl}orders/stats/totalSales`
+      `${API_URL}orders/stats/totalSales`
     )
+  }
+
+  getProduct(id: string): Observable<any> {
+    return this.http.get<any>(`$API_URL}products/${id}`)
   }
 }

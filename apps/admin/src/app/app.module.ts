@@ -2,7 +2,6 @@ import {NgModule} from '@angular/core'
 import {BrowserModule} from '@angular/platform-browser'
 
 import {AppComponent} from './app.component'
-import {RouterModule, Routes} from '@angular/router'
 import {ShellComponent} from './shared/shell/shell.component'
 import {SidebarComponent} from './shared/sidebar/sidebar.component'
 import {DashboardComponent} from './pages/dashboard/dashboard.component'
@@ -36,8 +35,12 @@ import {InputMaskModule} from 'primeng/inputmask'
 import {OrdersListComponent} from './pages/orders/orders-list/orders-list.component'
 import {OrdersDetailComponent} from './pages/orders/orders-detail/orders-detail.component'
 import {FieldsetModule} from 'primeng/fieldset'
-import {UsersModule} from '@nx-shop/users'
 import {AppRoutingModule} from './app-routing.module'
+import {StoreModule} from '@ngrx/store'
+import {EffectsModule} from '@ngrx/effects'
+import {StoreRouterConnectingModule} from '@ngrx/router-store'
+import {StoreDevtoolsModule} from '@ngrx/store-devtools'
+import {environment} from '@env/environment'
 
 const UX_MODULE = [
   CardModule,
@@ -79,10 +82,13 @@ const UX_MODULE = [
     FormsModule,
     NoopAnimationsModule,
     ReactiveFormsModule,
-    UsersModule,
     [...UX_MODULE],
     UiModule,
     InputMaskModule
+    //StoreModule.forRoot({}),
+    //EffectsModule.forRoot([]),
+    //StoreRouterConnectingModule.forRoot({stateKey: 'router'}),
+    //!environment.production ? StoreDevtoolsModule.instrument() : []
   ],
   providers: [MessageService, ConfirmationService],
   bootstrap: [AppComponent]

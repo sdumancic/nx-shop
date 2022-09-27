@@ -15,6 +15,7 @@
     "baseUrl": ".",
     "paths": {
       "@env/*": ["environments/*"],
+      "@nx-shop/cart": ["libs/cart/src/index.ts"],
       "@nx-shop/orders": ["libs/orders/src/index.ts"],
       "@nx-shop/products": ["libs/products/src/index.ts"],
       "@nx-shop/ui": ["libs/ui/src/index.ts"],

@@ -4,10 +4,13 @@
   "projects": {
     "admin": "apps/admin",
     "admin-e2e": "apps/admin-e2e",
+    "cart": "libs/cart",
     "ngshop": "apps/ngshop",
     "ngshop-e2e": "apps/ngshop-e2e",
     "orders": "libs/orders",
     "products": "libs/products",
+    "test": "apps/test",
+    "test-e2e": "apps/test-e2e",
     "ui": "libs/ui",
     "users": "libs/users"
   }

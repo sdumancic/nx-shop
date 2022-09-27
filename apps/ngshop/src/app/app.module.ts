@@ -10,8 +10,18 @@ import {AccordionModule} from 'primeng/accordion'
 import {NoopAnimationsModule} from '@angular/platform-browser/animations'
 import {UiModule} from '@nx-shop/ui'
 import {NavComponent} from './shared/nav/nav.component'
-import {ProductsModule} from '@nx-shop/products'
 import {HttpClientModule} from '@angular/common/http'
+import {OrdersModule} from '@nx-shop/orders'
+import {MessagesComponent} from './shared/messages/messages.component'
+import {ToastModule} from 'primeng/toast'
+import {MessageService} from 'primeng/api'
+//import {UsersModule} from '@nx-shop/users'
+import {StoreModule} from '@ngrx/store'
+import {EffectsModule} from '@ngrx/effects'
+import {StoreRouterConnectingModule} from '@ngrx/router-store'
+import {environment} from '@env/environment'
+import {StoreDevtoolsModule} from '@ngrx/store-devtools'
+import {ProductsModule} from '@nx-shop/products'
 
 const routes: Routes = [
   {
@@ -26,18 +36,25 @@ const routes: Routes = [
     HomePageComponent,
     HeaderComponent,
     FooterComponent,
-    NavComponent
+    NavComponent,
+    MessagesComponent
   ],
   imports: [
     NoopAnimationsModule,
+    ProductsModule,
     BrowserModule,
     RouterModule.forRoot(routes, {initialNavigation: 'enabledBlocking'}),
     UiModule,
     AccordionModule,
-    ProductsModule,
-    HttpClientModule
+    HttpClientModule,
+    OrdersModule,
+    ToastModule
+    /*StoreModule.forRoot({}),
+    EffectsModule.forRoot([]),
+    StoreRouterConnectingModule.forRoot({stateKey: 'router'}),
+    !environment.production ? StoreDevtoolsModule.instrument() : [], */
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

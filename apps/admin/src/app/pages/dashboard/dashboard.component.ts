@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core'
 import {OrdersService} from '@nx-shop/orders'
 import {take} from 'rxjs'
 import {UsersService} from '@nx-shop/users'
-import {Product, ProductsService} from '@nx-shop/products'
+import {ProductsService} from '@nx-shop/products'
 
 @Component({
   selector: 'admin-dashboard',

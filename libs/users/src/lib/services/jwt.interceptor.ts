@@ -7,7 +7,7 @@ import {
 import {Injectable} from '@angular/core'
 import {Observable} from 'rxjs'
 import {LocalStorageService} from './local-storage.service'
-import {environment} from '@env/environment'
+import {API_URL} from '../users.module'
 
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
@@ -18,7 +18,7 @@ export class JwtInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     const token = this.localStorageService.getToken()
-    const isApiUrl = request.url.startsWith(environment.apiUrl)
+    const isApiUrl = request.url.startsWith(API_URL)
     if (token && isApiUrl) {
       request = request.clone({
         setHeaders: {

@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core'
-import {CategoriesService} from '@nx-shop/products'
 import {ConfirmationService, MessageService} from 'primeng/api'
 import {Router} from '@angular/router'
 import {User, UsersService} from '@nx-shop/users'

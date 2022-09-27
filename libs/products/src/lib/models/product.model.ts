@@ -1,4 +1,4 @@
-import {Category} from '@nx-shop/products'
+import {Category} from '../models/category.model'
 
 export class Product {
   id?: string

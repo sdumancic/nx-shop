@@ -1,5 +1,4 @@
 import {OrderItem} from './order-item.model'
-import {User} from '@nx-shop/users'
 
 export class Order {
   id?: string
@@ -10,8 +9,8 @@ export class Order {
   zip?: string
   country?: string
   phone?: string
-  status?: number
+  status?: string
   totalPrice?: string
-  user?: User
+  user?: any
   dateOrdered?: string
 }

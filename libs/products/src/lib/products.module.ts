@@ -15,6 +15,8 @@ import {InputNumberModule} from 'primeng/inputnumber'
 import {RippleModule} from 'primeng/ripple'
 import {UiModule} from '@nx-shop/ui'
 
+export const API_URL = 'http://localhost:3000/api/v1/'
+
 const routes: Routes = [
   {
     path: 'products',

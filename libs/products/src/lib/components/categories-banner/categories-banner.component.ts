@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core'
+import {Component, OnInit, Optional} from '@angular/core'
 import {Category} from '../../models/category.model'
 import {CategoriesService} from '../../services/categories.service'
 import {take} from 'rxjs'
@@ -11,7 +11,7 @@ import {take} from 'rxjs'
 export class CategoriesBannerComponent implements OnInit {
   categories: Category[] = []
 
-  constructor(private categoriesService: CategoriesService) {}
+  constructor(@Optional() private categoriesService: CategoriesService) {}
 
   ngOnInit(): void {
     this.categoriesService
